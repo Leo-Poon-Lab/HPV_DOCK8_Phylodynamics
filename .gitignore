@@ -1,0 +1,16 @@
+# Ignore everything by default
+*
+
+# Keep the ignore file itself
+!.gitignore
+
+# Keep the lab note
+!HPVevo_labNote.docx
+
+# Keep selected folders
+!data/
+!data/**
+!presentation/
+!presentation/**
+!others/
+!others/**

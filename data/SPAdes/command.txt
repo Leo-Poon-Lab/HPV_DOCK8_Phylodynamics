@@ -1,0 +1,44 @@
+nohup /home/ubuntu/tool/SPAdes-4.2.0-Linux/bin/spades.py --meta \
+  -1 /home/ubuntu/HPV_evo/kneaddata/merged/MET1739_kneaddata_paired_1.fastq \
+  -2 /home/ubuntu/HPV_evo/kneaddata/merged/MET1739_kneaddata_paired_2.fastq \
+  -o /home/ubuntu/HPV_evo/spades/MET1739_SPAdes_output \
+  -t 8 -m 200 > MET1739.log 2>&1 &
+
+cd /home/ubuntu/HPV_evo/spades
+tail -f MET1739.log
+grep -i "warn" MET1739.log
+
+
+
+nohup /home/ubuntu/tool/SPAdes-4.2.0-Linux/bin/spades.py --meta \
+  -1 /home/ubuntu/HPV_evo/kneaddata/merged/MET1765_kneaddata_paired_1.fastq \
+  -2 /home/ubuntu/HPV_evo/kneaddata/merged/MET1765_kneaddata_paired_2.fastq \
+  -o /home/ubuntu/HPV_evo/spades/MET1765_SPAdes_output \
+  -t 8 -m 200 > MET1765.log 2>&1 &
+
+cd /home/ubuntu/HPV_evo/spades
+tail -f MET1765.log
+
+
+
+nohup /home/ubuntu/tool/SPAdes-4.2.0-Linux/bin/spades.py --meta \
+  -1 /home/ubuntu/HPV_evo/kneaddata/merged/MET2039_kneaddata_paired_1.fastq \
+  -2 /home/ubuntu/HPV_evo/kneaddata/merged/MET2039_kneaddata_paired_2.fastq \
+  -o /home/ubuntu/HPV_evo/spades/MET2039_SPAdes_output \
+  -t 32 -m 220 > MET2039.log 2>&1 &
+
+cd /home/ubuntu/HPV_evo/spades
+tail -f MET2039.log
+
+
+
+nohup /home/ubuntu/tool/SPAdes-4.2.0-Linux/bin/spades.py --meta \
+  -1 /home/ubuntu/HPV_evo/kneaddata/merged/MET2051_kneaddata_paired_1.fastq \
+  -2 /home/ubuntu/HPV_evo/kneaddata/merged/MET2051_kneaddata_paired_2.fastq \
+  -o /home/ubuntu/HPV_evo/spades/MET2051_SPAdes_output \
+  -t 8 -m 200 > MET2051.log 2>&1 &
+
+cd /home/ubuntu/HPV_evo/spades
+tail -f MET2051.log
+
+

@@ -1,0 +1,11 @@
+cd /home/ubuntu/HPV_evo/DOCK8_cell
+
+
+chmod +x download_script.sh
+nohup ./download_script.sh > download_script.out 2>&1 &
+
+
+
+awk -F',' 'NR>0 {print $1}' SraRunTable_reTry.csv | while read -r SRR_NUMBER; do
+    fasterq-dump --split-3 "${SRR_NUMBER}" --threads 40 -o "${SRR_NUMBER}"
+done
