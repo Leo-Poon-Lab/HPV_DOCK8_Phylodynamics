@@ -1,8 +1,9 @@
 # Ignore everything by default
 *
 
-# Keep the ignore file itself
+# Keep Git metadata files
 !.gitignore
+!.gitattributes
 
 # Keep the lab note
 !HPVevo_labNote.docx
