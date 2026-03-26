@@ -9,6 +9,9 @@
 !HPVevo_labNote.docx
 
 # Keep selected folders
+!.github/
+!.github/workflows/
+!.github/workflows/**
 !data/
 !data/**
 !presentation/

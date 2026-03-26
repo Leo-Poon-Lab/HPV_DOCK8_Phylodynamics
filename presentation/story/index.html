@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detangling evolutionary signals from co-infection in DOCK8-deficient skin</title>
+    <meta
+      name="description"
+      content="A project update page that links previous cohort work, data curation, three-step mapping, spatial structure, longitudinal interpretation, APOBEC screening, and recombination screening in DOCK8-deficient skin."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="#top">
+          <div class="brand-title-wrap">
+            <span class="brand-title">Project update | HPV evolution in DOCK8 deficiency</span>
+            <span class="site-signature">Ruixuan, 2026-03-26</span>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-shell">
+          <p class="eyebrow">Project update | HPV evolution in DOCK8 deficiency</p>
+          <h1>Detangling evolutionary signals from co-infection in DOCK8-deficient skin</h1>
+          <p class="hero-lede">
+            This study uses strain-aware genomic analysis to separate <strong>dominant-backbone persistence</strong>,
+            <strong>low-frequency cloud turnover</strong>, and rarer candidate new sequence change within dense
+            within-host HPV co-infection in DOCK8 deficiency.
+          </p>
+          <div class="hero-outline">
+            <article class="hero-outline-row">
+              <p class="hero-outline-label">Biological setting</p>
+              <p class="hero-outline-text">DOCK8-deficient skin carries dense multisite HPV co-infection, so persistence, transfer, and subtype turnover can coexist within one host.</p>
+            </article>
+            <article class="hero-outline-row">
+              <p class="hero-outline-label">Core challenge</p>
+              <p class="hero-outline-text">An apparent later sequence difference is ambiguous unless reference bias and hidden subtype structure are removed first.</p>
+            </article>
+            <article class="hero-outline-row">
+              <p class="hero-outline-label">This update shows</p>
+              <p class="hero-outline-text">How data curation, 3-step mapping, site-matched longitudinal adjudication, APOBEC screening, and mosaic screening were turned into one interpretive framework.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-grid">
+        <aside class="detail-nav" aria-label="Detailed timeline">
+          <div class="detail-nav-card">
+            <p class="detail-nav-title">Detailed timeline</p>
+            <div class="nav-progress-track" aria-hidden="true">
+              <div class="nav-progress-fill" id="navProgressFill"></div>
+            </div>
+
+            <div class="detail-group">
+              <p class="detail-group-label">Overview</p>
+              <a href="#abstract-overview" class="detail-link" data-detail-link="abstract-overview">Project abstract</a>
+            </div>
+
+            <div class="detail-group">
+              <p class="detail-group-label">Background</p>
+              <a href="#clinical-setting" class="detail-link" data-detail-link="clinical-setting">Previous study</a>
+              <a href="#project-question" class="detail-link" data-detail-link="project-question">Cohort frame</a>
+            </div>
+
+            <div class="detail-group">
+              <p class="detail-group-label">Data curation</p>
+              <a href="#raw-to-clean" class="detail-link" data-detail-link="raw-to-clean">Raw to clean reads</a>
+              <a href="#assembly-rescue" class="detail-link" data-detail-link="assembly-rescue">Assembly rescue</a>
+              <a href="#curation-handoff" class="detail-link" data-detail-link="curation-handoff">Why mapping took over</a>
+            </div>
+
+            <div class="detail-group">
+              <p class="detail-group-label">Analysis & Results</p>
+              <div class="nav-sub-group">
+                <a href="#mapping-backbone" class="detail-link" data-detail-link="mapping-backbone">3-step mapping workflow</a>
+              </div>
+              <div class="nav-sub-group">
+                <a href="#site-structure" class="detail-link" data-detail-link="site-structure">Spatial consensus structure</a>
+              </div>
+              <div class="nav-sub-group">
+                <a href="#time-dynamics" class="detail-link" data-detail-link="time-dynamics">L1 longitudinal dynamics</a>
+              </div>
+              <div class="nav-sub-group">
+                <a href="#apobec-logic" class="detail-link" data-detail-link="apobec-logic">APOBEC enrichment</a>
+              </div>
+              <div class="nav-sub-group">
+                <a href="#recomb-method" class="detail-link" data-detail-link="recomb-method">Recombination screening</a>
+              </div>
+            </div>
+
+            <div class="detail-group">
+              <p class="detail-group-label">Conclusion</p>
+              <a href="#take-home" class="detail-link" data-detail-link="take-home">Key findings</a>
+              <a href="#next-steps" class="detail-link" data-detail-link="next-steps">Next steps</a>
+            </div>
+
+          </div>
+        </aside>
+
+        <div class="story-column">
+          <section
+            class="major-section abstract-section"
+            id="abstract-overview"
+            data-major-section="overview"
+            data-detail-section="abstract-overview"
+          >
+            <div class="section-head">
+              <p class="section-kicker">Abstract</p>
+              <h2>A compact overview of the project logic</h2>
+              <p class="section-summary">
+                This abstract gives the full project in paper-style form before the page opens into background,
+                curation, mapping, and results. The goal is to make the logic readable from the start: why the cohort
+                matters, what changed methodologically, what was tested, and what the current evidence supports.
+              </p>
+            </div>
+
+            <article class="story-card abstract-card">
+              <div class="abstract-grid">
+                <article class="abstract-block">
+                  <p class="abstract-label">Background</p>
+                  <p>
+                    Previous metagenomic work showed that DOCK8-deficient skin has an <strong>expanded virome
+                    dominated by papillomaviruses</strong>, making it an unusually permissive ecosystem for cutaneous
+                    DNA viruses. That work defined the ecological scale of HPV colonization, but it was
+                    <strong>not designed to resolve how individual HPV populations change within a host</strong>. In
+                    a setting with many HPV types across multiple body sites and timepoints, an apparent sequence
+                    difference is <strong>intrinsically ambiguous</strong>. It may reflect persistence of the same
+                    dominant backbone, redistribution between sites, turnover beneath an unchanged consensus,
+                    replacement by a previously minor population, host-associated mutational pressure, or less
+                    commonly genuine new sequence change. We therefore extended the earlier virome-level work by
+                    moving from genome recovery to within-host population interpretation, using a framework built to
+                    <strong>separate dominant-consensus stability from sub-consensus dynamics</strong>.
+                  </p>
+                </article>
+
+                <article class="abstract-block">
+                  <p class="abstract-label">Methods</p>
+                  <p>
+                    We first reconstructed sample-level HPV read sets from the DOCK8 skin metagenomic cohort through
+                    raw-run intake, decontamination, sample-level merging, and paired-read repair. This preprocessing
+                    was necessary because <strong>reliable genome recovery and low-frequency analysis require
+                    correctly synchronized, sample-resolved read sets</strong>. The main analytical upgrade was a
+                    <strong>type-specific 3-step mapping framework</strong>. Quality-filtered reads were competitively
+                    mapped against a combined HPV reference collection, used to rebuild a sample-specific consensus
+                    backbone for each retained type, and then remapped to that backbone for LoFreq-based
+                    low-frequency variant calling. This replaced heterogeneous de novo contig backbones with a
+                    <strong>unified type-specific coordinate system</strong> for quantitative comparison. Before
+                    interpreting temporal change, we established a within-host spatial baseline by asking whether the
+                    same HPV type across multiple skin sites shared a dominant consensus backbone or remained
+                    site-structured. We then restricted longitudinal analysis to <strong>persistent
+                    same-patient, same-type, same-site pairs</strong> from 7 patients that passed stringent L1
+                    coverage and depth criteria. Longitudinal change was adjudicated in two layers:
+                    <strong>dominant-backbone comparison first, then low-frequency cloud classification</strong> for
+                    backbone-static pairs. In parallel, we ran a complement-collapsed APOBEC-consistent enrichment
+                    screen using callable TCW/WGA target sites with a no-softclip rescreen, and a conservative
+                    sliding-window local-BLAST mosaic screen as an exploratory recombination branch.
+                  </p>
+                </article>
+
+                <article class="abstract-block">
+                  <p class="abstract-label">Results</p>
+                  <p>
+                    Spatial structure was <strong>mixed rather than uniform</strong>. Among
+                    <strong>224 within-host multi-site comparisons</strong>, <strong>141 (62.9%)</strong> shared
+                    identical or near-identical dominant consensus backbones across sites, whereas
+                    <strong>83 (37.1%)</strong> retained substantial site-specific structure. In the longitudinal arm,
+                    <strong>246 candidate persistent pairs</strong> were reduced by stringent quality control to
+                    <strong>124 high-confidence L1 comparisons</strong>. At the dominant-consensus level,
+                    <strong>114 of 124 pairs (91.9%)</strong> showed no L1 backbone change between timepoints, while
+                    only <strong>10</strong> showed any backbone-level difference. Yet dominant-backbone stasis did
+                    not imply complete molecular stasis: among the 114 backbone-static pairs, only
+                    <strong>24</strong> lacked detectable low-frequency L1 variants at both timepoints, whereas the
+                    remaining <strong>90</strong> still showed cloud dynamics, including 7 stable clouds, 36 shifting
+                    clouds, and 47 complete-turnover clouds. The 10 backbone-changed pairs were heterogeneous.
+                    Small-change events were more compatible with fixation of alleles already detectable at low
+                    frequency at T1, whereas larger and more novel-dominated events were more compatible with
+                    replacement by a different pre-existing population or with background switching.
+                    <strong>APOBEC-consistent enrichment was detectable only in a subset of rows</strong>, and mosaic
+                    screening yielded only limited coherent candidates, keeping recombination-like patterns in an
+                    exploratory position at the current stage.
+                  </p>
+                </article>
+
+                <article class="abstract-block abstract-block-conclusion">
+                  <p class="abstract-label">Conclusion</p>
+                  <p>
+                    The main contribution of this study is not simply the detection of within-host HPV variation, but
+                    its <strong>resolution into biologically distinct layers</strong>. Relative to earlier de novo
+                    assembly-based virome profiling, the <strong>3-step mapping framework</strong> provides a unified
+                    type-specific coordinate system that makes longitudinal comparison quantitatively interpretable.
+                    Under that framework, within-host HPV dynamics in DOCK8-deficient skin are best described as
+                    <strong>dominant-backbone persistence with substantial low-frequency cloud turnover</strong>, plus
+                    focal host-editing signals and occasional candidate replacement events. The evolutionary signal is
+                    therefore <strong>real but modest</strong>: these viral populations are not completely static, yet
+                    most change occurs beneath an apparently stable dominant sequence rather than through frequent
+                    wholesale backbone evolution. This layered framework should also be useful in other complex
+                    cutaneous co-infection settings where persistence, replacement, and sub-consensus variation
+                    coexist.
+                  </p>
+                </article>
+              </div>
+            </article>
+          </section>
+
+          <section class="major-section" id="background" data-major-section="background">
+            <div class="section-head">
+              <p class="section-kicker">Background</p>
+              <h2>Why this cohort matters at genome level</h2>
+              <p class="section-summary">
+                Earlier cohort work already established that DOCK8-deficient skin is a virome-expanded,
+                papillomavirus-dominated ecosystem shaped by failed immune surveillance. This project reopens that
+                phenotype at genomic resolution and asks how persistence, hidden structure, and true new sequence
+                change can be distinguished within it.
+              </p>
+            </div>
+
+            <article class="story-card" id="clinical-setting" data-detail-section="clinical-setting">
+              <div class="card-head">
+                <p class="card-kicker">Previous study</p>
+                <h3>Earlier work established the biological foundation: DOCK8-deficient skin is virome-expanded and papillomavirus-dominated</h3>
+              </div>
+              <p>
+                A previous study showed that the skin ecosystem in DOCK8 deficiency is fundamentally different from
+                healthy skin. Instead of a bacteria-dominated community with only a small viral component,
+                DOCK8-deficient skin shifts toward an <strong>expanded eukaryotic virome</strong> in which
+                <strong>papillomaviruses become a dominant signal</strong>. That observation is the
+                <strong>starting point of this project</strong>.
+              </p>
+              <p>
+                The same work also showed that this is not simply a higher-load version of one familiar HPV
+                infection. Across the cohort, the skin carried <strong>405 HPV types</strong>, including about
+                <strong>250 novel types</strong>, with especially strong Gamma expansion. The virome is therefore both
+                heavy and taxonomically broad.
+              </p>
+              <p>
+                A later immune-recovery follow-up reinforced the same biological interpretation from the opposite
+                direction: when host immune function is restored, the skin microbiome and virome move back toward a
+                healthier state. Together, these studies show that the abnormal HPV burden is a
+                <strong>biological consequence of failed immune surveillance</strong>, not a sequencing artifact.
+              </p>
+              <div class="background-grid">
+                <article class="background-card">
+                  <h4>Ecological shift</h4>
+                  <p>Compared with healthy skin, DOCK8-deficient skin becomes virome-rich and heavily papillomavirus-dominated.</p>
+                </article>
+                <article class="background-card">
+                  <h4>Diversity shift</h4>
+                  <p>The cohort carries a broad HPV repertoire, including many previously undescribed types rather than a small repeated set of known viruses.</p>
+                </article>
+                <article class="background-card">
+                  <h4>Immune dependence</h4>
+                  <p>The phenotype tracks with immune status, supporting the view that failed surveillance permits persistent viral expansion.</p>
+                </article>
+              </div>
+              <div class="callout note-callout">
+                This project therefore does not begin by asking whether DOCK8-deficient skin carries a large HPV
+                burden. That was already established. The open problem is how to interpret that burden at strain and
+                sub-consensus resolution.
+              </div>
+              <div class="figure-grid figure-grid-2 background-figure-grid">
+                <figure class="figure-card background-figure-card">
+                  <div class="background-figure-stage">
+                    <img
+                      src="./assets/fig1bc.png"
+                      alt="Healthy versus DOCK8-deficient skin microbiome and virome composition from previous study"
+                      loading="eager"
+                      data-lightbox
+                    />
+                  </div>
+                  <figcaption>
+                    Previous work established the ecological contrast: healthy skin remains bacteria-dominated,
+                    whereas DOCK8-deficient skin becomes virome-rich and papillomavirus-heavy.
+                  </figcaption>
+                </figure>
+                <figure class="figure-card background-figure-card">
+                  <div class="background-figure-stage">
+                    <img
+                      src="./assets/novel_types.png"
+                      alt="Novel HPV type burden in the DOCK8 cohort"
+                      loading="eager"
+                      data-lightbox
+                    />
+                  </div>
+                  <figcaption>
+                    The same work showed that the cohort is taxonomically broad, with especially strong expansion of
+                    previously undescribed Gamma types.
+                  </figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="story-card" id="project-question" data-detail-section="project-question">
+              <div class="card-head">
+                <p class="card-kicker">Cohort frame</p>
+                <h3>This cohort turns immune failure into a natural experiment for within-host HPV interpretation</h3>
+              </div>
+              <p>
+                Once the previous study is taken as the starting point, the cohort itself becomes the
+                <strong>analytical opportunity</strong>. DOCK8 deficiency is a rare primary immunodeficiency with
+                severe cutaneous involvement, and this study follows <strong>27 patients</strong> sampled across
+                <strong>8 skin sites</strong>, with a longitudinal core of <strong>7 patients</strong> observed
+                across multiple years.
+              </p>
+              <p>
+                That design matters because persistent multisite co-infection makes apparent sequence difference
+                <strong>intrinsically ambiguous</strong>. A later sequence can reflect true new change, but it can
+                also reflect long-term persistence, redistribution between sites, fixation of standing variation, or
+                replacement by a pre-existing subtype already present within the same host.
+              </p>
+              <p>
+                Previous cohort-scale observations also suggest that HPV communities are more similar within a person
+                than between people. Each patient should therefore be viewed not as a series of independent
+                infections, but as a host carrying a <strong>structured internal HPV landscape</strong>. That is why
+                <strong>simple type counting or consensus-only comparison is not enough</strong>.
+              </p>
+              <div class="background-grid">
+                <article class="background-card">
+                  <h4>Cohort design</h4>
+                  <p>27 DOCK8-deficient patients with multisite skin sampling, plus a longitudinal subset that allows temporal adjudication.</p>
+                </article>
+                <article class="background-card">
+                  <h4>Biological opportunity</h4>
+                  <p>Immune failure makes persistence and coexistence visible for longer, exposing viral states that are often hidden in immunocompetent skin.</p>
+                </article>
+                <article class="background-card">
+                  <h4>Interpretive problem</h4>
+                  <p>The central task is to distinguish persistence, transfer, standing variation, subtype replacement, host editing, and only then true new sequence change.</p>
+                </article>
+              </div>
+              <div class="figure-grid figure-grid-2 background-figure-grid">
+                <figure class="figure-card background-figure-card">
+                  <div class="background-figure-stage">
+                    <img
+                      src="./assets/clinical_burden_fig1a.png"
+                      alt="Clinical burden of cutaneous HPV disease in DOCK8 deficiency"
+                      loading="eager"
+                      data-lightbox
+                    />
+                  </div>
+                  <figcaption>
+                    The cohort is grounded in a real immune phenotype: severe cutaneous disease with unusually visible
+                    long-term HPV persistence.
+                  </figcaption>
+                </figure>
+                <figure class="figure-card background-figure-card">
+                  <div class="background-figure-stage">
+                    <img
+                      src="./assets/fig_intraHost.png"
+                      alt="Within-host HPV community similarity from prior cohort work"
+                      loading="eager"
+                      data-lightbox
+                    />
+                  </div>
+                  <figcaption>
+                    Within-person structure means later differences must be read against a host-specific internal HPV
+                    background rather than as isolated independent events.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="definition-grid compact-grid compact-grid-2">
+                <article class="definition-card">
+                  <h4>What earlier studies already solved</h4>
+                  <p>Clinical phenotype, virome expansion, papillomavirus dominance, diversity burden, and dependence on immune status.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>What this project adds</h4>
+                  <p>It moves from virome-level description to strain-aware within-host interpretation by separating dominant-backbone stability from sub-consensus dynamics.</p>
+                </article>
+              </div>
+              <div class="callout note-callout">
+                This is why the story now moves into curation and 3-step mapping. The unsolved problem is no longer
+                whether the cohort carries heavy HPV burden, but <strong>how to interpret sequence-level difference</strong>
+                within a dense, persistent, host-structured co-infection background.
+              </div>
+              <p class="section-bridge">
+                Once that biological context is clear, the next bottleneck is technical: the raw metagenomic cohort
+                still has to be turned into stable sample-level genomes before any strain-aware comparison can begin.
+              </p>
+            </article>
+          </section>
+
+          <section class="major-section" id="curation" data-major-section="curation">
+            <div class="section-head">
+              <p class="section-kicker">Data Curation</p>
+              <h2>Turning raw metagenomes into stable HPV genome inputs</h2>
+              <p class="section-summary">
+                This stage turns cohort-scale metagenomic data into defensible HPV genome inputs. The logic is simple:
+                rebuild raw runs into sample-level paired reads, recover genomes by assembly, then explain why genome
+                recovery alone was still not enough for downstream comparison.
+              </p>
+            </div>
+
+            <article class="story-card" id="raw-to-clean" data-detail-section="raw-to-clean">
+              <div class="card-head">
+                <p class="card-kicker">Raw to clean reads</p>
+                <h3>From raw sequencing runs to sample-level HPV genome recovery</h3>
+              </div>
+              <p>
+                The starting material was a metagenomic cohort distributed across <strong>545 raw SRR files</strong>,
+                with many biological samples sequenced in multiple runs. Before any genome-level interpretation was
+                possible, those runs had to be rebuilt into <strong>stable, sample-resolved paired-read sets</strong>.
+              </p>
+              <p>
+                The curation logic was linear: download and audit the raw runs, deplete host and other non-viral
+                background with KneadData, merge runs at the biological-sample level, and then carry the merged paired
+                reads into <em>de novo</em> assembly. This produced <strong>202 combined sample-level metagenomic
+                inputs</strong> from which <strong>HPV whole genomes and L1 sequences</strong> could be recovered.
+              </p>
+              <div class="retention-band">
+                <div class="retention-step">
+                  <span class="retention-label">Input</span>
+                  <strong>545 raw SRR files</strong>
+                  <span>Original metagenomic sequencing runs from the DOCK8 skin cohort.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Reconstruction</span>
+                  <strong>Clean paired reads</strong>
+                  <span>Host and non-viral background removed, then sequencing runs merged at biological-sample level.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Recovered outputs</span>
+                  <strong>202 combined samples</strong>
+                  <span>Assembly-ready inputs from which HPV whole genomes and L1 regions were recovered.</span>
+                </div>
+              </div>
+              <div class="callout">
+                This is the <strong>first filter on interpretability</strong>. If stable sample-level genomes cannot
+                be recovered from the metagenomic background, every later claim about type identity, remapping, and
+                low-frequency variation becomes unstable.
+              </div>
+            </article>
+
+            <article class="story-card" id="assembly-rescue" data-detail-section="assembly-rescue">
+              <div class="card-head">
+                <p class="card-kicker">Technical add-on</p>
+                <h3>Assembly failure was traced to paired-read desynchronization, not just to sample size</h3>
+              </div>
+              <p>
+                The heaviest HPV-rich samples were also the most likely to fail or stall during metaSPAdes. Audit of
+                the merged paired-end data showed that the dominant failure was not random:
+                <strong>202/202 combined samples</strong> had <strong>R1/R2 header desynchronization</strong> after
+                cleaning and merging.
+              </p>
+              <p>
+                This defect was corrected with BBMap <code>repair.sh</code>, which re-synchronized paired reads before
+                assembly reruns. All 202 samples were repaired successfully, with <strong>0.00% reads lost</strong>
+                to singleton output, restoring <strong>stable genome recovery</strong> in the rescued samples.
+              </p>
+              <div class="definition-grid compact-grid compact-grid-3">
+                <article class="definition-card">
+                  <h4>Audit result</h4>
+                  <p class="definition-count">202 / 202</p>
+                  <p>Merged samples carried paired-read desynchronization at the R1/R2 header level.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Repair step</h4>
+                  <p class="definition-count"><code>repair.sh</code></p>
+                  <p>BBMap-based paired-read repair restored strict R1/R2 synchrony before assembly reruns.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Repair outcome</h4>
+                  <p class="definition-count">0.00%</p>
+                  <p>Reads lost to singleton output after full paired-read repair across the merged sample set.</p>
+                </article>
+              </div>
+            </article>
+
+            <article class="story-card" id="curation-handoff" data-detail-section="curation-handoff">
+              <div class="card-head">
+                <p class="card-kicker">Methodological handoff</p>
+                <h3>Assembly recovered genomes, but 3-step mapping was needed to create a unified comparative scaffold</h3>
+              </div>
+              <p>
+                Even after genome rescue, de novo assembly alone could not solve the final comparative problem. The
+                cohort contains many samples, many HPV types, and many related subtype backbones, so assembled contigs
+                alone do not provide a <strong>stable shared coordinate system</strong> for downstream variant
+                interpretation.
+              </p>
+              <p>
+                In other words, assembly answered the question <em>can a genome be recovered from this sample?</em>
+                The next stage had to answer a different question: <em>can homologous positions be compared
+                consistently across samples and timepoints without confusing subtype divergence with new sequence
+                change?</em> That requirement <strong>motivated the move to 3-step mapping</strong>.
+              </p>
+              <div class="retention-band">
+                <div class="retention-step">
+                  <span class="retention-label">What assembly solved</span>
+                  <strong>Recovered sample-level genomes</strong>
+                  <span>De novo assembly remained necessary for recovering HPV whole genomes from the metagenomic background.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">What assembly could not solve</span>
+                  <strong>Unified gene coordinates</strong>
+                  <span>Assembled contigs alone were not enough for clean comparison across many samples, many HPV types, and hidden subtype diversity.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Design response</span>
+                  <strong>Adopt 3-step mapping</strong>
+                  <span>A remapping framework was needed to place downstream variation onto patient- and type-specific coordinate systems.</span>
+                </div>
+              </div>
+              <div class="split-note">
+                This is the real transition from curation into analysis. Assembly remained essential for genome
+                recovery, but the project became quantitatively interpretable only after it moved onto the
+                <strong>3-step mapping framework</strong>.
+              </div>
+            </article>
+          </section>
+
+          <section class="major-section" id="analysis" data-major-section="analysis">
+            <div class="section-head">
+              <p class="section-kicker">Analysis & Results</p>
+              <h2>Resolving within-host HPV dynamics</h2>
+              <p class="section-summary">
+                The analytical chain is deliberately layered: first remove reference bias, then define the spatial
+                baseline, then resolve longitudinal dynamics at L1, and only then test targeted mutation signatures
+                and residual mosaic candidates.
+              </p>
+            </div>
+
+            <article class="story-card" id="mapping-backbone" data-detail-section="mapping-backbone">
+              <div class="card-head">
+                <p class="card-kicker">3-step mapping workflow</p>
+                <h3>Resolving reference bias before any evolutionary claim is made</h3>
+              </div>
+              <p>
+                In DOCK8-deficient skin, HPV does not behave as a single clean lineage. Each specimen can contain many
+                co-circulating types and closely related subtype backbones, so a naive T1-versus-T2 consensus
+                comparison is intrinsically ambiguous. An apparent new fixed difference may represent genuine
+                within-host sequence change, but it may also reflect <strong>ecological replacement by a
+                pre-existing minor subtype</strong> already present below consensus level at T1.
+              </p>
+              <p>
+                The 3-step mapping workflow is therefore not a cosmetic refinement. It is the methodological
+                backbone that converts raw metagenomic reads into a <strong>strain-aware coordinate system</strong>,
+                so low-frequency iSNVs can later be interpreted as standing variation rather than as artifacts from
+                an ill-fitting generic reference.
+              </p>
+              <div class="hypothesis-block">
+                Core methodological principle: before interpreting any longitudinal difference, reads must be
+                remapped onto a patient- and type-specific backbone so that low-frequency iSNVs can be read as
+                standing variation rather than as reference-driven artifacts.
+              </div>
+              <div class="retention-band">
+                <div class="retention-step">
+                  <span class="retention-label">Problem</span>
+                  <strong>Reference bias</strong>
+                  <span>Generic HPV references inflate pseudo-SNPs and obscure true minor alleles.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Backbone</span>
+                  <strong>3-step mapping</strong>
+                  <span>Competitive recall, sample-specific consensus reconstruction, then remapping plus LoFreq.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Payoff</span>
+                  <strong>Standing variation</strong>
+                  <span>T1 minor alleles become readable evidence when T2 appears to change.</span>
+                </div>
+              </div>
+              <div class="framework-flow method-criteria">
+                <article class="framework-step">
+                  <h4>Dominant-type recall is conservative by design</h4>
+                  <p>
+                    Competitive mapping is followed by strict L1 support criteria: MapQ and BaseQ filtering,
+                    &gt;95% L1 breadth, and mean L1 depth &ge; 5X before a type is retained as a real dominant
+                    infection.
+                  </p>
+                </article>
+                <article class="framework-step">
+                  <h4>Consensus reconstruction creates the patient-carried scaffold</h4>
+                  <p>
+                    High-confidence major differences are folded into a sample-specific backbone, while low-coverage
+                    blind zones remain masked. This establishes the coordinate system before any evolutionary
+                    interpretation.
+                  </p>
+                </article>
+                <article class="framework-step">
+                  <h4>Variant calling becomes informative only after backbone repair</h4>
+                  <p>
+                    Remapping to the rebuilt backbone sharply reduces pseudo-SNP inflation and allows LoFreq to
+                    recover the T1 minor-allele archive used to distinguish pre-existing from genuinely novel T2
+                    alleles.
+                  </p>
+                </article>
+              </div>
+              
+              <div class="mapping-flowchart">
+                <div class="flow-step" data-step="1">
+                  <div class="step-icon">01</div>
+                  <div class="step-content">
+                    <p class="methods-tag">Competitive recall</p>
+                    <p>Map QC-passed reads to a broad HPV reference panel so each read first competes for its best-matching type rather than being forced onto one arbitrary backbone.</p>
+                  </div>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step" data-step="2">
+                  <div class="step-icon">02</div>
+                  <div class="step-content">
+                    <p class="methods-tag">Consensus reconstruction</p>
+                    <p>Rebuild a strict sample-specific consensus for each dominant type so the patient-carried genomic backbone is represented directly.</p>
+                  </div>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step" data-step="3">
+                  <div class="step-icon">03</div>
+                  <div class="step-content">
+                    <p class="methods-tag">LoFreq variant calling</p>
+                    <p>Remap reads to the patient backbone and use LoFreq to recover high-confidence low-frequency iSNVs that can later adjudicate longitudinal changes.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="explorer-shell">
+                <div class="explorer-tabs" id="mappingExplorerTabs" aria-label="3-step mapping explorer">
+                  <button class="explorer-tab active" type="button" data-mapping-step="0">Type recall</button>
+                  <button class="explorer-tab" type="button" data-mapping-step="1">Backbone rebuild</button>
+                  <button class="explorer-tab" type="button" data-mapping-step="2">iSNV recovery</button>
+                </div>
+                <div class="explorer-panel" id="mappingStepPanel"></div>
+              </div>
+
+              <div class="callout note-callout">
+                <strong>Analytical consequence:</strong> after this backbone is established, a T2 fixed difference can be
+                asked the right question: was it genuinely absent at T1, or was it already visible as a low-frequency
+                iSNV that later rose to dominance?
+              </div>
+            </article>
+
+            <article class="story-card" id="site-structure" data-detail-section="site-structure">
+              <div class="card-head">
+                <p class="card-kicker">Spatial consensus structure</p>
+                <h3>Cross-site sharing defines the spatial baseline for later temporal interpretation</h3>
+              </div>
+              <p>
+                This is the first result-level checkpoint before any longitudinal interpretation. The question is:
+                when the same HPV type is observed across different skin sites within the same patient, are the
+                <strong>dominant consensus backbones broadly shared</strong>, or already compartmentalized by site?
+              </p>
+              <p>
+                The answer is mixed. A large shared component exists, making host-internal redistribution or
+                self-transfer biologically plausible. But the site-structured fraction remains substantial, so later
+                temporal difference cannot be read as new evolution by default. In other words, the same host already
+                contains <strong>both connectivity and compartmentalization at baseline</strong>.
+              </p>
+              <div class="callout note-callout">
+                Interpretive consequence: if a later backbone appears at another site in the same patient, it may
+                reflect pre-existing within-host sharing rather than new emergence. But because site structure is also
+                common, later difference cannot simply be dismissed as trivial redistribution. Both facts must carry
+                forward into the longitudinal analysis.
+              </div>
+              <div class="definition-grid compact-grid compact-grid-4">
+                <article class="definition-card">
+                  <h4>Total events</h4>
+                  <p class="definition-count">224</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Shared / Near-Identical</h4>
+                  <p class="definition-count">141 (62.9%)</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Site-structured</h4>
+                  <p class="definition-count">83 (37.1%)</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Evidence</h4>
+                  <p>Broad intrahost sharing.</p>
+                </article>
+              </div>
+              <div id="ringGalleryNav" class="gallery-nav"></div>
+              <div id="ringGallery" class="gallery-stack"></div>
+            </article>
+
+            <article class="story-card" id="time-dynamics" data-detail-section="time-dynamics">
+              <div class="card-head">
+                <p class="card-kicker">Site-matched L1 longitudinal analysis</p>
+                <h3>Consensus-level stasis does not imply cloud-level stasis</h3>
+              </div>
+              <p>
+                This analysis asks a narrower but cleaner longitudinal question than the earlier all-site overview.
+                For the 7 longitudinal patients, it restricts attention to <strong>persistent pairs defined within the
+                same patient, the same HPV type, and the same anatomical site</strong>. In practice, the
+                site-matched framework is built on the <strong>only two skin sites that are repeatedly trackable
+                across these longitudinal patients: Pc and Ra</strong>. Under that control, the key question becomes
+                whether <strong>L1 is truly static across time</strong>, or whether consensus only appears static
+                while the low-frequency iSNV cloud underneath it continues to move.
+              </p>
+              <p>
+                The design deliberately separates two signal layers. First, it compares the <strong>L1 backbone
+                consensus</strong> between T1 and T2 under strict site-matched QC. Second, only for pairs whose
+                backbone is completely unchanged, it reopens the problem at the <strong>low-frequency cloud</strong>
+                level to ask whether <strong>minor variants are stable, shifting, or turning over entirely</strong>.
+              </p>
+              <div class="hypothesis-block">
+                Working hypothesis: in immunodeficient skin, the L1 backbone is usually stable, but that apparent
+                stasis can mask substantial turnover in the low-frequency iSNV cloud beneath it.
+              </div>
+              <div class="callout split-callout">
+                This is a stricter longitudinal lens than the earlier whole-population framework. By staying within
+                the same site and the same persistent type, it <strong>reduces ecological mixing</strong> and makes
+                backbone-versus-cloud interpretation much cleaner.
+              </div>
+              <div class="logic-path compact-logic">
+                <article class="logic-step">
+                  <span class="logic-index">1</span>
+                  <div>
+                    <h4>Define persistent site-matched pairs</h4>
+                    <p>Retain only same-patient, same-type, same-site pairs present at both timepoints; in this longitudinal subset, the trackable repeated sites are Pc and Ra.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">2</span>
+                  <div>
+                    <h4>Apply strict L1 QC, then compare the backbone</h4>
+                    <p>Only pairs with mean depth &gt; 100 and 100% L1 coverage at both timepoints enter the backbone comparison.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">3</span>
+                  <div>
+                    <h4>Reopen backbone-static pairs at cloud resolution</h4>
+                    <p>If the dominant L1 sequence is unchanged, ask whether the iSNV cloud is absent, stable, shifting, or completely turned over between T1 and T2.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="explorer-shell">
+                <div class="explorer-tabs" id="longitudinalModelTabs" aria-label="Longitudinal L1 analysis explorer">
+                  <button class="explorer-tab active" type="button" data-model-index="0">Pair design</button>
+                  <button class="explorer-tab" type="button" data-model-index="1">Backbone layer</button>
+                  <button class="explorer-tab" type="button" data-model-index="2">Cloud layer</button>
+                </div>
+                <div class="explorer-panel" id="longitudinalModelPanel"></div>
+              </div>
+              <div class="retention-band">
+                <div class="retention-step">
+                  <span class="retention-label">Persistent candidates</span>
+                  <strong>246 pairs</strong>
+                  <span>Same patient, same type, same site, present at both timepoints before strict filtering.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Strict QC pass</span>
+                  <strong>124 pairs</strong>
+                  <span>Both timepoints exceed the depth and coverage threshold for defensible L1 comparison.</span>
+                </div>
+                <div class="retention-arrow">→</div>
+                <div class="retention-step">
+                  <span class="retention-label">Interpretive split</span>
+                  <strong>114 static | 10 changed</strong>
+                  <span>The backbone is usually stable; the next question is whether the cloud beneath it is quiet or mobile.</span>
+                </div>
+              </div>
+              <div class="definition-grid compact-grid compact-grid-4">
+                <article class="definition-card">
+                  <h4>Persistent candidates</h4>
+                  <p class="definition-count">246</p>
+                  <p>All same-site persistent pairs entering the L1 screen.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>QC-pass pairs</h4>
+                  <p class="definition-count">124</p>
+                  <p>Pairs with mean depth &gt; 100 and full L1 coverage at both timepoints.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Backbone-static</h4>
+                  <p class="definition-count">114</p>
+                  <p>Pairs with <strong>identical L1 consensus backbone</strong> between T1 and T2.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Backbone-mutated</h4>
+                  <p class="definition-count">10</p>
+                  <p>Only a <strong>minority</strong> show any L1 consensus change under this strict design.</p>
+                </article>
+              </div>
+              <div class="callout note-callout">
+                <strong>Main longitudinal result:</strong> L1 backbone stasis is common, but complete molecular
+                silence is not. Among the 114 backbone-static pairs, only 24 show no L1 iSNV cloud at either
+                timepoint, whereas 90 still show cloud-level movement.
+              </div>
+              <div class="callout note-callout">
+                Operational definition used here: a <strong>backbone-static pair</strong> means that the dominant
+                consensus base is the same across callable L1 positions at T1 and T2. A <strong>polymorphic
+                site</strong> means that, beneath that dominant base, reads still support a detectable non-consensus
+                allele. The <strong>cloud</strong> is the collection of these low-frequency polymorphic sites and
+                their frequencies within one sample. Therefore, <strong>backbone-static does not mean
+                mutation-free</strong>: it means only that no minor variant has risen high enough to replace the
+                dominant backbone.
+              </div>
+              <div class="definition-grid compact-grid compact-grid-4">
+                <article class="definition-card">
+                  <h4>Backbone</h4>
+                  <p>The dominant L1 consensus sequence, that is, the major base carried at each callable position.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Polymorphic site</h4>
+                  <p>A callable L1 position where mapped reads support a detectable non-consensus allele below fixation.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Cloud</h4>
+                  <p>The full set of low-frequency polymorphic sites and their allele frequencies beneath one backbone.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Cloud classes</h4>
+                  <p>No cloud means zero detectable sites; stable, shifting, and turnover describe increasing change in which minor sites are carried across time.</p>
+                </article>
+              </div>
+              <div class="logic-path compact-logic">
+                <article class="logic-step">
+                  <span class="logic-index">1</span>
+                  <div>
+                    <h4>Fix the backbone layer first</h4>
+                    <p>Ask whether the dominant L1 consensus sequence is unchanged between T1 and T2.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">2</span>
+                  <div>
+                    <h4>Reopen sub-consensus variation</h4>
+                    <p>Within backbone-static pairs, list every callable L1 position that still carries a minor allele.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">3</span>
+                  <div>
+                    <h4>Compare the T1 and T2 clouds</h4>
+                    <p>Evaluate whether the same low-frequency sites are retained, partly reweighted, or lost and replaced.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">4</span>
+                  <div>
+                    <h4>Classify the hidden dynamic</h4>
+                    <p>This yields four readable outcomes: no cloud, stable cloud, shifting cloud, or complete turnover under the same backbone.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="concept-grid">
+                <article class="concept-card concept-card-wide">
+                  <p class="concept-label">How to read the cloud layer</p>
+                  <h4>One unchanged backbone can still hide four distinct sub-consensus states</h4>
+                  <p class="concept-text">
+                    Each mini-panel below holds the <strong>same L1 backbone</strong> constant at T1 and T2. What
+                    changes is the pattern of low-frequency polymorphic sites beneath that backbone.
+                  </p>
+                  <div class="cloud-class-grid">
+                    <article class="cloud-class-panel">
+                      <p class="cloud-class-title">No iSNV cloud</p>
+                      <figure class="schematic-figure">
+                        <svg viewBox="0 0 300 176" role="img" aria-label="No iSNV cloud schematic">
+                          <text x="16" y="20" class="schematic-axis-label">Per-site non-consensus AF</text>
+                          <text x="210" y="166" class="schematic-axis-label">Genome position</text>
+                          <line x1="54" y1="30" x2="54" y2="146" class="schematic-axis"></line>
+                          <line x1="54" y1="146" x2="276" y2="146" class="schematic-axis"></line>
+                          <text x="68" y="70" class="schematic-row-label">T1</text>
+                          <text x="68" y="120" class="schematic-row-label">T2</text>
+                          <line x1="94" y1="66" x2="258" y2="66" class="schematic-backbone"></line>
+                          <line x1="94" y1="116" x2="258" y2="116" class="schematic-backbone"></line>
+                          <text x="112" y="94" class="schematic-note">No callable low-frequency sites</text>
+                        </svg>
+                      </figure>
+                    </article>
+                    <article class="cloud-class-panel">
+                      <p class="cloud-class-title">Stable cloud</p>
+                      <figure class="schematic-figure">
+                        <svg viewBox="0 0 300 176" role="img" aria-label="Stable cloud schematic">
+                          <text x="16" y="20" class="schematic-axis-label">Per-site non-consensus AF</text>
+                          <text x="210" y="166" class="schematic-axis-label">Genome position</text>
+                          <line x1="54" y1="30" x2="54" y2="146" class="schematic-axis"></line>
+                          <line x1="54" y1="146" x2="276" y2="146" class="schematic-axis"></line>
+                          <text x="68" y="70" class="schematic-row-label">T1</text>
+                          <text x="68" y="120" class="schematic-row-label">T2</text>
+                          <line x1="94" y1="66" x2="258" y2="66" class="schematic-backbone"></line>
+                          <line x1="94" y1="116" x2="258" y2="116" class="schematic-backbone"></line>
+                          <line x1="118" y1="66" x2="118" y2="48" class="schematic-stem shared-stem"></line>
+                          <line x1="170" y1="66" x2="170" y2="40" class="schematic-stem shared-stem"></line>
+                          <line x1="222" y1="66" x2="222" y2="54" class="schematic-stem shared-stem"></line>
+                          <line x1="118" y1="116" x2="118" y2="98" class="schematic-stem shared-stem"></line>
+                          <line x1="170" y1="116" x2="170" y2="90" class="schematic-stem shared-stem"></line>
+                          <line x1="222" y1="116" x2="222" y2="104" class="schematic-stem shared-stem"></line>
+                          <circle cx="118" cy="48" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="170" cy="40" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="222" cy="54" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="118" cy="98" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="170" cy="90" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="222" cy="104" r="5" class="schematic-point shared-point"></circle>
+                        </svg>
+                      </figure>
+                    </article>
+                    <article class="cloud-class-panel">
+                      <p class="cloud-class-title">Shifting cloud</p>
+                      <figure class="schematic-figure">
+                        <svg viewBox="0 0 300 176" role="img" aria-label="Shifting cloud schematic">
+                          <text x="16" y="20" class="schematic-axis-label">Per-site non-consensus AF</text>
+                          <text x="210" y="166" class="schematic-axis-label">Genome position</text>
+                          <line x1="54" y1="30" x2="54" y2="146" class="schematic-axis"></line>
+                          <line x1="54" y1="146" x2="276" y2="146" class="schematic-axis"></line>
+                          <text x="68" y="70" class="schematic-row-label">T1</text>
+                          <text x="68" y="120" class="schematic-row-label">T2</text>
+                          <line x1="94" y1="66" x2="258" y2="66" class="schematic-backbone"></line>
+                          <line x1="94" y1="116" x2="258" y2="116" class="schematic-backbone"></line>
+                          <line x1="126" y1="66" x2="126" y2="46" class="schematic-stem shared-stem"></line>
+                          <line x1="182" y1="66" x2="182" y2="58" class="schematic-stem shared-stem"></line>
+                          <line x1="230" y1="66" x2="230" y2="42" class="schematic-stem t1-stem"></line>
+                          <line x1="126" y1="116" x2="126" y2="104" class="schematic-stem shared-stem"></line>
+                          <line x1="182" y1="116" x2="182" y2="86" class="schematic-stem shared-stem"></line>
+                          <line x1="242" y1="116" x2="242" y2="100" class="schematic-stem t2-stem"></line>
+                          <circle cx="126" cy="46" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="182" cy="58" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="230" cy="42" r="5" class="schematic-point t1-point"></circle>
+                          <circle cx="126" cy="104" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="182" cy="86" r="5" class="schematic-point shared-point"></circle>
+                          <circle cx="242" cy="100" r="5" class="schematic-point t2-point"></circle>
+                        </svg>
+                      </figure>
+                    </article>
+                    <article class="cloud-class-panel">
+                      <p class="cloud-class-title">Complete turnover</p>
+                      <figure class="schematic-figure">
+                        <svg viewBox="0 0 300 176" role="img" aria-label="Complete turnover schematic">
+                          <text x="16" y="20" class="schematic-axis-label">Per-site non-consensus AF</text>
+                          <text x="210" y="166" class="schematic-axis-label">Genome position</text>
+                          <line x1="54" y1="30" x2="54" y2="146" class="schematic-axis"></line>
+                          <line x1="54" y1="146" x2="276" y2="146" class="schematic-axis"></line>
+                          <text x="68" y="70" class="schematic-row-label">T1</text>
+                          <text x="68" y="120" class="schematic-row-label">T2</text>
+                          <line x1="94" y1="66" x2="258" y2="66" class="schematic-backbone"></line>
+                          <line x1="94" y1="116" x2="258" y2="116" class="schematic-backbone"></line>
+                          <line x1="112" y1="66" x2="112" y2="46" class="schematic-stem t1-stem"></line>
+                          <line x1="164" y1="66" x2="164" y2="58" class="schematic-stem t1-stem"></line>
+                          <line x1="220" y1="66" x2="220" y2="40" class="schematic-stem t1-stem"></line>
+                          <line x1="134" y1="116" x2="134" y2="94" class="schematic-stem t2-stem"></line>
+                          <line x1="194" y1="116" x2="194" y2="106" class="schematic-stem t2-stem"></line>
+                          <line x1="246" y1="116" x2="246" y2="84" class="schematic-stem t2-stem"></line>
+                          <circle cx="112" cy="46" r="5" class="schematic-point t1-point"></circle>
+                          <circle cx="164" cy="58" r="5" class="schematic-point t1-point"></circle>
+                          <circle cx="220" cy="40" r="5" class="schematic-point t1-point"></circle>
+                          <circle cx="134" cy="94" r="5" class="schematic-point t2-point"></circle>
+                          <circle cx="194" cy="106" r="5" class="schematic-point t2-point"></circle>
+                          <circle cx="246" cy="84" r="5" class="schematic-point t2-point"></circle>
+                        </svg>
+                      </figure>
+                    </article>
+                  </div>
+                  <p class="schematic-legend">
+                    <span class="legend-chip"><span class="legend-dot legend-dot-shared"></span>shared site across T1 and T2</span>
+                    <span class="legend-chip"><span class="legend-dot legend-dot-t1"></span>T1-only site</span>
+                    <span class="legend-chip"><span class="legend-dot legend-dot-t2"></span>T2-only site</span>
+                  </p>
+                </article>
+              </div>
+              <p class="concept-caption">
+                These schematics define the four states used throughout the static-pair analysis. The real evidence
+                comes from the cohort summaries and the sample-level plots below.
+              </p>
+              <div class="callout note-callout">
+                In these cloud schematics, the y-axis is the <strong>site-level non-consensus allele fraction</strong>:
+                for each genomic position, it represents the <strong>sum of all iSNV frequencies that are not the
+                consensus base at that site</strong>. It is therefore not a sum across different positions, but it
+                can include more than one alternative allele at the same position.
+              </div>
+              <figure class="figure-grid figure-grid-2">
+                <div class="figure-card">
+                  <img
+                    src="./assets/static_pair_l1_cloud_classes_by_patient_v1.png"
+                    alt="Classes of L1 iSNV cloud behavior behind backbone-static pairs"
+                    loading="eager"
+                    data-lightbox
+                  />
+                  <figcaption>
+                    Backbone-static pairs are not mostly quiescent. Across patients, complete turnover and shifting
+                    cloud states are more common than perfectly stable clouds.
+                  </figcaption>
+                </div>
+                <div class="figure-card">
+                  <img
+                    src="./assets/static_pair_l1_isnv_burden_scatter_v1.png"
+                    alt="T1 versus T2 L1 iSNV burden for backbone-static pairs"
+                    loading="eager"
+                    data-lightbox
+                  />
+                  <figcaption>
+                    Even when the consensus backbone is unchanged, low-frequency burden often moves away from the
+                    diagonal, showing that T1 and T2 cloud size are frequently asymmetric.
+                  </figcaption>
+                </div>
+              </figure>
+              <p class="section-bridge">
+                The key interpretive split within the 114 backbone-static pairs is therefore not static versus
+                mutated, but <strong>cloud-free stasis versus cloud-bearing stasis</strong>. The 24 pairs with no
+                detected L1 polymorphic sites at either timepoint are the clearest examples of true molecular
+                silence. All other backbone-static pairs retain some degree of low-frequency structure, whether that
+                structure is preserved, shifted, or completely replaced.
+              </p>
+              <div class="callout split-callout">
+                The viewer below reopens the static pairs one sample at a time. Start with a patient, then click a
+                type-site pair to see whether that static backbone is accompanied by <strong>No iSNV cloud</strong>,
+                <strong>Stable cloud</strong>, <strong>Shifting cloud</strong>, or <strong>Complete turnover</strong>.
+                In other words, it asks whether the same dominant backbone is hiding <strong>no minor variation</strong>,
+                <strong>the same minor variation</strong>, or <strong>a different minor-variant composition</strong>
+                at the second timepoint.
+              </div>
+              <div id="staticPairPatientNav" class="gallery-nav"></div>
+              <div id="staticPairSampleNav" class="gallery-subnav"></div>
+              <div id="staticPairViewer" class="gallery-stack"></div>
+              <p class="section-bridge">
+                The tables below separate the two longitudinal layers explicitly: first, how many pairs stay static
+                or changed at the backbone level in each patient; second, how the iSNV cloud behaves among the
+                backbone-static pairs.
+              </p>
+              <div id="dynamicsTable" class="table-wrap"></div>
+              <div id="staticCloudTable" class="table-wrap"></div>
+              <div class="callout split-callout">
+                Backbone-changed pairs need a different reading standard. Small changes enriched for
+                <strong>from-cloud</strong> sites are the best matches to standing-variation fixation, whereas larger
+                events dominated by <strong>novel</strong> sites are more consistent with background switching,
+                subtype replacement, or a more distant hidden lineage being sampled at T2.
+              </div>
+              <article class="method-compare-card">
+                <div class="method-compare-head">
+                  <p class="concept-label">How to read fixed differences</p>
+                  <h4>Was the eventual T2 allele already detectable in the T1 cloud?</h4>
+                  <p class="concept-text">
+                    This is the key split within the 10 backbone-changed pairs. If the eventual T2 allele is already
+                    detectable at low frequency in T1, the change is compatible with fixation of standing variation.
+                    If the same allele is absent from the T1 cloud, the site is treated as <strong>novel relative to
+                    T1</strong> and is less consistent with a simple cloud-to-backbone takeover.
+                  </p>
+                </div>
+                <div class="fixation-compare-grid">
+                  <article class="fixation-compare-panel">
+                    <div class="fixation-copy">
+                      <p class="cloud-class-title">From-cloud fixation</p>
+                      <p class="fixation-summary">The eventual T2 allele is already detectable in the T1 cloud.</p>
+                    </div>
+                    <figure class="schematic-figure">
+                      <svg viewBox="0 0 320 188" role="img" aria-label="From-cloud fixation schematic">
+                        <text x="18" y="20" class="schematic-axis-label">Frequency of the eventual T2 allele</text>
+                        <line x1="54" y1="28" x2="54" y2="156" class="schematic-axis"></line>
+                        <line x1="54" y1="156" x2="294" y2="156" class="schematic-axis"></line>
+                        <text x="34" y="36" class="schematic-tick">1</text>
+                        <text x="26" y="98" class="schematic-tick">0.1</text>
+                        <text x="38" y="156" class="schematic-tick">0</text>
+                        <text x="112" y="176" class="schematic-axis-label">T1</text>
+                        <text x="220" y="176" class="schematic-axis-label">T2</text>
+                        <line x1="114" y1="156" x2="114" y2="110" class="schematic-stem shared-stem"></line>
+                        <circle cx="114" cy="110" r="6" class="schematic-point shared-point"></circle>
+                        <line x1="222" y1="156" x2="222" y2="42" class="schematic-stem shared-stem"></line>
+                        <rect x="216" y="36" width="12" height="12" rx="3" class="schematic-fixed shared-fixed"></rect>
+                        <text x="168" y="84" text-anchor="middle" class="schematic-note schematic-note-center">
+                          <tspan x="168" dy="0">Detected in the T1</tspan>
+                          <tspan x="168" dy="13">low-frequency cloud</tspan>
+                        </text>
+                        <text x="222" y="26" text-anchor="middle" class="schematic-note">Fixed at T2</text>
+                      </svg>
+                    </figure>
+                    <div class="fixation-readout">
+                      <p><strong>Decision</strong><span>Precursor detected at T1</span></p>
+                      <p><strong>Interpretation</strong><span>Consistent with standing-variation fixation</span></p>
+                    </div>
+                  </article>
+                  <article class="fixation-compare-panel">
+                    <div class="fixation-copy">
+                      <p class="cloud-class-title">Novel fixation</p>
+                      <p class="fixation-summary">The eventual T2 allele is absent from the detectable T1 cloud.</p>
+                    </div>
+                    <figure class="schematic-figure">
+                      <svg viewBox="0 0 320 188" role="img" aria-label="Novel fixation schematic">
+                        <text x="18" y="20" class="schematic-axis-label">Frequency of the eventual T2 allele</text>
+                        <line x1="54" y1="28" x2="54" y2="156" class="schematic-axis"></line>
+                        <line x1="54" y1="156" x2="294" y2="156" class="schematic-axis"></line>
+                        <text x="34" y="36" class="schematic-tick">1</text>
+                        <text x="26" y="98" class="schematic-tick">0.1</text>
+                        <text x="38" y="156" class="schematic-tick">0</text>
+                        <text x="112" y="176" class="schematic-axis-label">T1</text>
+                        <text x="220" y="176" class="schematic-axis-label">T2</text>
+                        <text x="160" y="114" text-anchor="middle" class="schematic-note schematic-note-center">
+                          <tspan x="160" dy="0">No detectable</tspan>
+                          <tspan x="160" dy="13">T1 precursor</tspan>
+                        </text>
+                        <line x1="222" y1="156" x2="222" y2="42" class="schematic-stem t2-stem"></line>
+                        <rect x="216" y="36" width="12" height="12" rx="3" class="schematic-fixed novel-fixed"></rect>
+                        <text x="222" y="26" text-anchor="middle" class="schematic-note">Fixed at T2</text>
+                      </svg>
+                    </figure>
+                    <div class="fixation-readout">
+                      <p><strong>Decision</strong><span>No precursor detected at T1</span></p>
+                      <p><strong>Interpretation</strong><span>More consistent with novel or background-switched change</span></p>
+                    </div>
+                  </article>
+                </div>
+                <p class="concept-caption">
+                  The mutated-pair viewer therefore separates <strong>from-cloud</strong> from
+                  <strong>novel</strong> changes because only the former can be directly linked to standing variation
+                  already observable at T1.
+                </p>
+              </article>
+              <div id="longitudinalOverviewNav" class="gallery-nav"></div>
+              <div id="longitudinalOverviewGallery" class="gallery-stack"></div>
+              <div id="smallDiffTable" class="table-wrap"></div>
+            </article>
+
+            <article class="story-card" id="apobec-logic" data-detail-section="apobec-logic">
+              <div class="card-head">
+                <p class="card-kicker">APOBEC enrichment analysis</p>
+                <h3>Defining an APOBEC-consistent signal without over-interpreting strand direction</h3>
+              </div>
+              <p>
+                APOBEC enzymes act on <strong>cytosine in single-stranded DNA</strong>. In HPV, the canonical target
+                is the central base of a <strong>TCW</strong> motif, where <strong>W = A or T</strong>. However, this
+                project records variation on a fixed reference strand, not on the transient strand that was actually
+                edited. For that reason, the same APOBEC-like event can appear in the data either as a
+                <strong>TCW-centered C mutation</strong> or as its complementary <strong>WGA-centered G
+                mutation</strong>.
+              </p>
+              <div class="callout note-callout">
+                Operational definition used here: this is a <strong>complement-collapsed APOBEC-consistent enrichment
+                screen</strong>. It tests whether APOBEC-like changes are enriched in APOBEC-like sequence contexts,
+                but it does <strong>not</strong> claim which physical strand was edited.
+              </div>
+              <div class="apobec-context-grid">
+                <article class="motif-card">
+                  <p class="motif-label">Reference view 1</p>
+                  <div class="motif-sequence" aria-label="TCW motif">
+                    <span class="motif-base">T</span>
+                    <span class="motif-base motif-hot">C</span>
+                    <span class="motif-base">W</span>
+                  </div>
+                  <p class="motif-note">
+                    If the edited cytosine is represented directly on the reference, the signal is seen at the
+                    central <strong>C</strong>. In this workflow, APOBEC-consistent outcomes here are counted as
+                    <strong>C&gt;T</strong> or <strong>C&gt;G</strong>.
+                  </p>
+                </article>
+                <article class="motif-card">
+                  <p class="motif-label">Reference view 2</p>
+                  <div class="motif-sequence" aria-label="WGA motif">
+                    <span class="motif-base">W</span>
+                    <span class="motif-base motif-hot">G</span>
+                    <span class="motif-base">A</span>
+                  </div>
+                  <p class="motif-note">
+                    If the same event is observed through the complementary reference orientation, it is read at the
+                    central <strong>G</strong>. APOBEC-consistent outcomes here are counted as
+                    <strong>G&gt;A</strong> or <strong>G&gt;C</strong>.
+                  </p>
+                </article>
+              </div>
+              <div class="logic-path compact-logic">
+                <article class="logic-step">
+                  <span class="logic-index">1</span>
+                  <div>
+                    <h4>Callable first</h4>
+                    <p>Only positions with sufficient depth and read quality enter the denominator.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">2</span>
+                  <div>
+                    <h4>Motif-aware target set</h4>
+                    <p>Target sites are callable TCW plus callable WGA positions, so the screen is robust to reference orientation.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">3</span>
+                  <div>
+                    <h4>APOBEC-consistent mutation set</h4>
+                    <p>Only C&gt;T/C&gt;G or G&gt;A/G&gt;C changes at the central target base are counted as signal.</p>
+                  </div>
+                </article>
+                <article class="logic-step">
+                  <span class="logic-index">4</span>
+                  <div>
+                    <h4>Background comparison</h4>
+                    <p>The target rate is tested against other callable C/G positions using a one-sided Fisher exact test.</p>
+                  </div>
+                </article>
+              </div>
+              <div class="callout note-callout">
+                In other words, this section is not asking whether a sample simply has many mutations, and it is not
+                a strand-specific mechanistic proof. It asks whether <strong>APOBEC-compatible changes are enriched in
+                APOBEC-compatible contexts more than expected from the callable C/G background</strong>.
+              </div>
+              <div class="table-wrap narrow-table">
+                <table class="paper-table">
+                  <thead>
+                    <tr>
+                      <th>Class</th>
+                      <th>Mutated</th>
+                      <th>Not mutated</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>APOBEC target motifs</td>
+                      <td>(a) Target mutated sites</td>
+                      <td>(b) Callable target sites without mutation</td>
+                    </tr>
+                    <tr>
+                      <td>Callable C/G background</td>
+                      <td>(c) Background mutated sites</td>
+                      <td>(d) Callable background sites without mutation</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="definition-grid compact-grid compact-grid-3">
+                <article class="definition-card">
+                  <h4>Total rows screened</h4>
+                  <p class="definition-count">4,069</p>
+                  <p>Whole-genome rows entering the no-softclip rescreen summary.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>QC processed</h4>
+                  <p class="definition-count">3,419</p>
+                  <p>Rows retained after the read-level quality and rescreen filters.</p>
+                </article>
+                <article class="definition-card">
+                  <h4>Raw p &lt; 0.05</h4>
+                  <p class="definition-count">51</p>
+                  <p>Rows carried forward for figure-level inspection as focal APOBEC candidates.</p>
+                </article>
+              </div>
+              <div class="bullet-panel">
+                <p><strong>Odds ratio &gt; 1:</strong> APOBEC-compatible changes are more concentrated in TCW/WGA target contexts than in the callable background.</p>
+                <p><strong>Raw p-value:</strong> useful for prioritizing rows that deserve figure-level inspection.</p>
+              </div>
+              <article class="method-compare-card">
+                <div class="method-compare-head">
+                  <p class="card-kicker">Whole-cohort prioritization</p>
+                  <h4>Sample-level screening for APOBEC-target enrichment</h4>
+                  <p class="concept-text">
+                    This ranking view is a triage layer before the patient-specific overview panels. It keeps
+                    significance and mutational burden visible at the same time, so rows with nominal enrichment but
+                    very small SNV counts are not conflated with higher-information candidates. Here,
+                    <strong>higher-SNV hits</strong> satisfy <code>NoSoft_Fisher_p &lt; 0.05</code> and
+                    <code>NoSoft_SNVs &gt;= 20</code>, <strong>lower-SNV hits</strong> satisfy
+                    <code>NoSoft_Fisher_p &lt; 0.05</code> but <code>NoSoft_SNVs &lt; 20</code>, and all remaining
+                    rows are treated as background.
+                  </p>
+                </div>
+                <figure class="figure-card apobec-rank-card">
+                  <img
+                    src="./assets/05b_apobec_ranking_refined.png"
+                    alt="Refined APOBEC ranking plot with higher-SNV hits, lower-SNV hits, and background rows"
+                    loading="eager"
+                    data-lightbox
+                    data-lightbox-caption="Sample-level screening for APOBEC-target enrichment. Each point represents one sample-type combination, not one longitudinal event."
+                  />
+                  <figcaption>
+                    Each point represents one sample-type combination, not one longitudinal event.
+                  </figcaption>
+                </figure>
+              </article>
+              <div id="apobecPatientSummary" class="table-wrap"></div>
+              <div id="apobecTable" class="table-wrap"></div>
+              <div id="apobecGalleryNav" class="gallery-nav"></div>
+              <div id="apobecGallery" class="gallery-stack"></div>
+              <div class="callout note-callout">
+                <strong>Results and interpretation.</strong> We performed a cohort-wide sample-level screen for
+                <strong>APOBEC-target enrichment across evaluable sample-type combinations</strong>. Among evaluable
+                sample-type combinations, <strong>51</strong> showed raw Fisher's exact test
+                <code>p &lt;= 0.05</code> for enrichment of APOBEC-target mutations. Because this screen included both
+                longitudinally sampled and single-timepoint sample-type combinations, these candidates indicate
+                <strong>APOBEC-compatible mutational spectra within individual samples</strong> rather than direct
+                evidence of APOBEC-driven longitudinal evolution. To reflect differing information content, we further
+                separated raw-positive candidates into <strong>higher-SNV hits</strong>
+                (<code>NoSoft_SNVs &gt;= 20</code>) and <strong>lower-SNV hits</strong>
+                (<code>NoSoft_SNVs &lt; 20</code>). Overall, APOBEC-like enrichment was detectable in a
+                <strong>minority of samples</strong> and was heterogeneous across patients, sites, and HPV types,
+                arguing against a universal role for APOBEC in within-host HPV diversity. APOBEC-like enrichment
+                should therefore be interpreted here as a <strong>possible contributor to within-sample variation</strong>,
+                rather than as a general explanation for longitudinal HPV dynamics.
+              </div>
+            </article>
+
+            <article class="story-card" id="recomb-method" data-detail-section="recomb-method">
+              <div class="card-head">
+                <p class="card-kicker">Recombination screening</p>
+                <h3>Mosaic screening with local-BLAST tracks</h3>
+              </div>
+              <p>
+                The recombination screen is deliberately conservative. Each candidate child sequence is compared
+                against all intra-patient parent pairs, then evaluated in sliding windows so that local support can be
+                followed across the whole backbone rather than inferred from a single global best hit.
+              </p>
+              <div class="callout note-callout">
+                Read this section as <strong>candidate mosaic screening</strong>, not final proof. The useful signal is
+                a <strong>coherent block-like parent switch</strong> across adjacent windows, whereas fragmented
+                alternation is treated as noise or insufficient evidence.
+              </div>
+              <div id="recombRules" class="rule-chip-row"></div>
+              <figure class="figure-grid figure-grid-2">
+                <div class="figure-card">
+                   <img src="./assets/recomb_pilot_6001.png" alt="Recomb Pilot 6001" data-lightbox />
+                   <figcaption>Patient 6001: fragmented local switching without a coherent mosaic block.</figcaption>
+                </div>
+                <div class="figure-card">
+                   <img src="./assets/recomb_pilot_6002.png" alt="Recomb Pilot 6002" data-lightbox />
+                   <figcaption>Patient 6002: a more coherent block-like pattern that remains a candidate rather than proof.</figcaption>
+                </div>
+              </figure>
+            </article>
+          </section>
+
+          <section class="major-section" id="conclusion" data-major-section="conclusion">
+            <div class="section-head">
+              <p class="section-kicker">Conclusion</p>
+              <h2>What the current evidence now supports</h2>
+              <p class="section-summary">
+                The strongest contribution of the current story is not generic HPV variant counting. It is a
+                strain-aware framework for disentangling persistent backbones, mobile low-frequency clouds,
+                APOBEC-like enrichment, and ecological replacement within dense cutaneous co-infection.
+              </p>
+            </div>
+
+            <article class="story-card" id="take-home" data-detail-section="take-home">
+              <div class="card-head">
+                <p class="card-kicker">Key findings</p>
+              <h3>The most defensible conclusion is backbone stability with cloud mobility, not rampant de novo evolution</h3>
+              </div>
+              <div class="framework-flow method-criteria">
+                <article class="framework-step">
+                  <h4>This is a within-host ecological disentangling project</h4>
+                  <p>The central problem is no longer “does HPV vary within a host?” but <strong>“how should apparent difference be partitioned into persistent backbone, minor-variant cloud turnover, APOBEC-like enrichment, and ecological replacement?”</strong></p>
+                </article>
+                <article class="framework-step">
+                  <h4>Sample-specific remapping was necessary, not optional</h4>
+                  <p>In this cohort, dense multisite co-infection and subtype coexistence make generic reference-based comparison intrinsically ambiguous. The <strong>3-step mapping framework</strong> is therefore the condition that makes later longitudinal interpretation defensible.</p>
+                </article>
+                <article class="framework-step">
+                  <h4>Dominant L1 backbones are usually stable</h4>
+                  <p>Under strict site-matched longitudinal design, <strong>114 of 124 QC-pass L1 pairs</strong> remain backbone-static. At the dominant-consensus level, overt sequence replacement is therefore the minority pattern rather than the default state.</p>
+                </article>
+                <article class="framework-step">
+                  <h4>Backbone-stable does not mean molecularly static</h4>
+                  <p>Among the 114 backbone-static pairs, only <strong>24</strong> are truly cloud-free. The remaining <strong>90</strong> still show cloud movement, with shifting and complete-turnover states dominating over perfectly stable clouds. The strongest current signal is therefore <strong>consensus stability with population mobility underneath</strong>.</p>
+                </article>
+                <article class="framework-step">
+                  <h4>Mechanistic branches remain secondary and graded by evidence</h4>
+                  <p>Some backbone changes are compatible with from-cloud fixation, whereas others fit better with subtype replacement or background switching. APOBEC-like enrichment is visible in a subset of samples and should be read as an <strong>enrichment signal rather than a universal mechanism</strong>. Recombination remains in the exploratory screening branch rather than in the core claim set.</p>
+                </article>
+              </div>
+              <div class="callout note-callout">
+                The main message is therefore: <strong>in DOCK8-deficient skin, persistent type-site
+                HPV pairs are best described as backbone-stable but cloud-mobile</strong>. Most observable change is
+                better explained by layered within-host ecology than by frequent wholesale de novo backbone evolution.
+              </div>
+            </article>
+
+            <article class="story-card" id="next-steps" data-detail-section="next-steps">
+              <div class="card-head">
+                <p class="card-kicker">Next steps</p>
+              <h3>What still needs to be strengthened for the paper version</h3>
+              </div>
+              <div class="bullet-panel">
+                <p><strong>Strengthen longitudinal adjudication</strong> by pushing ambiguous backbone-changed pairs to finer locus-level origin tracing, so from-cloud fixation, subtype replacement, and residual novel events are separated more explicitly.</p>
+                <p><strong>Expand the static-pair analysis</strong> by testing whether shifting and complete-turnover states track mixed infection, site context, or low-frequency burden rather than treating all cloud movement as a single class.</p>
+                <p><strong>Keep APOBEC conservative</strong> as a heterogeneous sample-level enrichment branch, but tighten the link between the rank plot, patient-level overview figures, and the final candidate set so the evidence ladder is explicit.</p>
+                <p><strong>Keep recombination exploratory</strong> until coherent candidates are supported by stronger orthogonal evidence and can be separated more decisively from assembly-linked artifacts.</p>
+                <p><strong>Formal writing</strong> should now be tightened into a paper-style narrative that consistently foregrounds the strongest claim, uses graded evidence language for weaker branches, and keeps the distinction between backbone dynamics, cloud dynamics, and mechanism screens explicit throughout.</p>
+                <p><strong>Main figure design</strong> should be consolidated into a small set of paper-ready figures that mirrors the analytical logic of the project: biological foundation, data curation plus 3-step mapping, spatial baseline, backbone-versus-cloud longitudinal adjudication, and selective mechanism branches for APOBEC and recombination.</p>
+              </div>
+            </article>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close figure">Close</button>
+      <figure class="lightbox-figure">
+        <img id="lightboxImage" alt="" />
+        <figcaption id="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
