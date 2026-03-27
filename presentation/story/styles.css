@@ -973,7 +973,9 @@ strong {
 .fixation-compare-panel {
   display: grid;
   grid-template-columns: 1fr;
+  align-content: start;
   gap: 14px;
+  height: 100%;
   padding: 16px;
   border-radius: 18px;
   background: rgba(248, 246, 242, 0.88);
@@ -981,6 +983,8 @@ strong {
 }
 
 .fixation-copy {
+  display: grid;
+  gap: 8px;
   max-width: 34ch;
 }
 
@@ -2503,6 +2507,70 @@ strong {
   .cloud-class-grid,
   .fixation-compare-grid {
     gap: 10px;
+  }
+
+  .method-compare-head h4 {
+    font-size: clamp(1rem, 4.9vw, 1.16rem);
+    line-height: 1.22;
+    text-wrap: pretty;
+  }
+
+  .fixation-compare-panel {
+    gap: 10px;
+    padding: 10px 9px 11px;
+    border-radius: 15px;
+  }
+
+  .fixation-copy {
+    gap: 6px;
+  }
+
+  .fixation-compare-panel .cloud-class-title {
+    margin-bottom: 0;
+    font-size: 0.78rem;
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+  }
+
+  .fixation-summary {
+    font-size: 0.78rem;
+    line-height: 1.42;
+    text-wrap: pretty;
+  }
+
+  .schematic-figure svg {
+    border-radius: 14px;
+  }
+
+  .fixation-readout {
+    gap: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(21, 35, 45, 0.08);
+    background: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+  }
+
+  .fixation-readout p {
+    gap: 3px;
+    padding: 8px 9px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 0.78rem;
+  }
+
+  .fixation-readout p + p {
+    border-top: 1px solid rgba(21, 35, 45, 0.08);
+  }
+
+  .fixation-readout strong {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  .fixation-readout span {
+    font-size: 0.77rem;
+    line-height: 1.4;
   }
 
   .hero-lede,
