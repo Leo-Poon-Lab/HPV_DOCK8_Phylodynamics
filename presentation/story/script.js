@@ -580,10 +580,12 @@ function setupScrollSpy() {
   const detailSections = [...document.querySelectorAll("[data-detail-section]")];
   const detailLinks = [...document.querySelectorAll("[data-detail-link]")];
   const header = document.querySelector(".site-header");
+  const detailNav = document.querySelector(".detail-nav");
+  let lastDetailLinkKey = null;
 
   function setActiveLink(sections, links, sectionAttr, linkAttr, offsetExtra = 0) {
     if (sections.length === 0 || links.length === 0) {
-      return;
+      return null;
     }
 
     const headerOffset = header?.offsetHeight || 0;
@@ -596,14 +598,43 @@ function setupScrollSpy() {
       }
     });
 
+    let activeLink = null;
     links.forEach((link) => {
-      link.classList.toggle("active", link.dataset[linkAttr] === activeSection.dataset[sectionAttr]);
+      const isActive = link.dataset[linkAttr] === activeSection.dataset[sectionAttr];
+      link.classList.toggle("active", isActive);
+      if (isActive) {
+        activeLink = link;
+      }
+    });
+
+    return activeLink;
+  }
+
+  function revealActiveDetailLink(link) {
+    if (!link || window.innerWidth > 960) {
+      return;
+    }
+
+    link.scrollIntoView({
+      behavior: "auto",
+      block: "nearest",
+      inline: "center"
     });
   }
 
   function updateActiveSections() {
+    const mobileDetailOffset = Math.min((detailNav?.offsetHeight || 0) + 18, 96);
+    const detailOffset = window.innerWidth <= 960 ? mobileDetailOffset : 160;
+
     setActiveLink(majorSections, majorLinks, "majorSection", "majorLink", 120);
-    setActiveLink(detailSections, detailLinks, "detailSection", "detailLink", 160);
+    const activeDetailLink = setActiveLink(detailSections, detailLinks, "detailSection", "detailLink", detailOffset);
+    const nextKey = activeDetailLink?.dataset.detailLink || null;
+
+    if (activeDetailLink && nextKey !== lastDetailLinkKey) {
+      revealActiveDetailLink(activeDetailLink);
+    }
+
+    lastDetailLinkKey = nextKey;
   }
 
   updateActiveSections();

@@ -2019,13 +2019,13 @@ strong {
   .background-grid,
   .abstract-grid,
   .concept-grid,
-  .fixation-grid,
-  .fixation-compare-grid {
+  .fixation-grid {
     grid-template-columns: 1fr;
   }
 
-  .cloud-class-grid {
-    grid-template-columns: 1fr;
+  .cloud-class-grid,
+  .fixation-compare-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .fixation-compare-panel {
@@ -2123,10 +2123,13 @@ strong {
 
   .hero h1 {
     margin-top: 10px;
-    max-width: 11.2ch;
-    font-size: clamp(1.42rem, 6.5vw, 1.95rem);
-    line-height: 1.08;
-    letter-spacing: -0.028em;
+    max-width: none;
+    font-size: clamp(1.56rem, 6vw, 2rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+    hyphens: none;
+    overflow-wrap: normal;
   }
 
   .hero-lede {
@@ -2164,8 +2167,9 @@ strong {
   }
 
   .detail-nav {
-    position: static;
-    top: auto;
+    position: sticky;
+    top: calc(var(--header-height) + 6px);
+    z-index: 35;
     width: 100%;
   }
 
@@ -2183,6 +2187,7 @@ strong {
     min-width: 0;
     width: 100%;
     max-width: 100%;
+    box-shadow: 0 14px 28px rgba(21, 35, 45, 0.08);
   }
 
   .detail-nav-card::-webkit-scrollbar {
@@ -2206,8 +2211,8 @@ strong {
   }
 
   .detail-link {
-    min-height: 30px;
-    padding: 0 10px;
+    min-height: 32px;
+    padding: 0 11px;
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
@@ -2215,6 +2220,7 @@ strong {
     border: 1px solid rgba(21, 35, 45, 0.07);
     font-size: 0.78rem;
     line-height: 1;
+    flex-shrink: 0;
   }
 
   .detail-link::before {
@@ -2335,6 +2341,11 @@ strong {
     line-height: 1.58;
   }
 
+  .cloud-class-panel,
+  .fixation-compare-panel {
+    min-width: 0;
+  }
+
   .abstract-label,
   .card-kicker,
   .section-kicker,
@@ -2451,9 +2462,8 @@ strong {
   }
 
   .hero h1 {
-    max-width: 10.6ch;
-    font-size: clamp(1.28rem, 6.2vw, 1.72rem);
-    line-height: 1.1;
+    font-size: clamp(1.4rem, 6.4vw, 1.72rem);
+    line-height: 1.08;
   }
 
   .brand-title {
@@ -2488,6 +2498,11 @@ strong {
 
   .definition-count {
     font-size: 1.15rem;
+  }
+
+  .cloud-class-grid,
+  .fixation-compare-grid {
+    gap: 10px;
   }
 
   .hero-lede,
